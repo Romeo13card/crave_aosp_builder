@@ -144,7 +144,7 @@ jobs:
           export PROJECTID="35"
           export REPO_INIT="repo init -u https://android.googlesource.com/platform/manifest.git -b master --git-lfs --depth=1"
         ;;
-                "AOSP")
+         "Morbid")
           export PROJECTFOLDER="/crave-devspaces/Morbid"
           export PROJECTID="36"
           export REPO_INIT="repo init -u https://github.com/SerasaOS/android_manifest.git -b unsub --git-lfs"
