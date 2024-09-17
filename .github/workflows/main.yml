@@ -28,6 +28,7 @@ on:
           - 'CyanogenMOD 14.1'
           - 'AOSP'
           - 'Morbid'
+          - 'The Parasite Project'
       BUILD_DIFFERENT_ROM:
         description: "Command to initialize a different 'repo' project:"
         required: false
@@ -38,19 +39,19 @@ on:
       LOCAL_MANIFEST:
         description: "Personal local manifest [repository or raw]:"
         required: true
-        default: 'https://github.com/sounddrill31/local_manifests_oxygen'
+        default: 'https://github.com/ardia-kun/local_manifests'
       LOCAL_MANIFEST_BRANCH:
         description: "Personal local manifest's branch:"
         required: false
-        default: 'lineage-21-qpr3'
+        default: 'lineage'
       DEVICE_NAME:
         description: "Device's codename:"
         required: true
-        default: "oxygen"
+        default: "fog"
       PRODUCT_NAME:
         description: "Product to build:"
         required: true
-        default: "oxygen"
+        default: "fog"
       BUILD_COMMAND:
         description: 'Command to be used for compiling:'
         required: true
@@ -146,8 +147,13 @@ jobs:
         ;;
          "Morbid")
           export PROJECTFOLDER="/crave-devspaces/Morbid"
-          export PROJECTID="36"
+          export PROJECTID="72"
           export REPO_INIT="repo init -u https://github.com/SerasaOS/android_manifest.git -b unsub --git-lfs"
+         ;; 
+          "The Parasite Project")
+          export PROJECTFOLDER="/crave-devspaces/TheParasiteProject"
+          export PROJECTID="82"
+          export REPO_INIT="repo init --depth=1 --no-repo-verify -u https://github.com/TheParasiteProject/manifest -b main -g default,-mips,-darwin,-notdefault --git-lfs"
          ;; 
         esac
 
