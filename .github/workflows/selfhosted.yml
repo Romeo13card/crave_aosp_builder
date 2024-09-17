@@ -27,6 +27,7 @@ on:
           - 'LineageOS 16.0'
           - 'CyanogenMOD 14.1'
           - 'AOSP'
+          - 'Morbid'
       BUILD_DIFFERENT_ROM:
         description: "Command to initialize a different 'repo' project:"
         required: false
@@ -182,6 +183,11 @@ jobs:
           export PROJECTID="35"
           export REPO_INIT="repo init -u https://android.googlesource.com/platform/manifest.git -b master --git-lfs --depth=1"
         ;;
+        "Morbid")
+          export PROJECTFOLDER="/crave-devspaces/Morbid"
+          export PROJECTID="36"
+          export REPO_INIT="repo init -u https://github.com/SerasaOS/android_manifest.git -b unsub --git-lfs"
+         ;; 
         esac
 
         if [[ ${{ github.event.inputs.PRODUCT_NAME }} == *_* ]] && [[ ${{ github.event.inputs.PRODUCT_NAME }} != gsi_* ]] && [[ ${{ github.event.inputs.PRODUCT_NAME }} != sdk_* ]] && [[ ${{ github.event.inputs.PRODUCT_NAME }} != *_sprout ]] && [[ ${{ github.event.inputs.PRODUCT_NAME }} != Mi439_* ]] && [[ ${{ github.event.inputs.PRODUCT_NAME }} != Mi8937_* ]]; then
