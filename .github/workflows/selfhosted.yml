@@ -29,6 +29,7 @@ on:
           - 'AOSP'
           - 'Morbid'
           - 'The Parasite Project'
+          - 'Project Sakura 11.0'
       BUILD_DIFFERENT_ROM:
         description: "Command to initialize a different 'repo' project:"
         required: false
@@ -194,6 +195,11 @@ jobs:
           export PROJECTID="82"
           export REPO_INIT="repo init --depth=1 --no-repo-verify -u https://github.com/TheParasiteProject/manifest -b main -g default,-mips,-darwin,-notdefault --git-lfs"
          ;;
+         "Project Sakura 11.0")
+          export PROJECTFOLDER="/crave-devspaces/ProjectSakura-11.0"
+          export PROJECTID="85"
+          export REPO_INIT="repo init --depth=1 -u https://github.com/ProjectSakura/android.git -b 11"
+         ;;
         esac
 
         if [[ ${{ github.event.inputs.PRODUCT_NAME }} == *_* ]] && [[ ${{ github.event.inputs.PRODUCT_NAME }} != gsi_* ]] && [[ ${{ github.event.inputs.PRODUCT_NAME }} != sdk_* ]] && [[ ${{ github.event.inputs.PRODUCT_NAME }} != *_sprout ]] && [[ ${{ github.event.inputs.PRODUCT_NAME }} != Mi439_* ]] && [[ ${{ github.event.inputs.PRODUCT_NAME }} != Mi8937_* ]]; then
@@ -357,7 +363,7 @@ jobs:
           -d parse_mode="Markdown"
         }
         
-        send_telegram_message "Crave Project: ${{ github.event.inputs.BASE_PROJECT }}%0ACrave ProjectID: $PROJECTID %0ABuild for ${{ github.event.inputs.DEVICE_NAME }} has been queued }}"
+        send_telegram_message "Crave Project: ${{ github.event.inputs.BASE_PROJECT }}%0ACrave ProjectID: $PROJECTID %0ABuild for ${{ github.event.inputs.DEVICE_NAME }} Antri Dulu Min }}"
       env:
         chatId: ${{ secrets.TELEGRAM_TO }}
         botToken: ${{ secrets.TELEGRAM_TOKEN }}
@@ -510,7 +516,7 @@ jobs:
           -d parse_mode="Markdown"
         }
 
-        send_telegram_message "Crave Project: ${{ github.event.inputs.BASE_PROJECT }}%0ACrave ProjectID: $PROJECTID %0ABuild for ${{ github.event.inputs.DEVICE_NAME }} has Succeeded! }}"
+        send_telegram_message "Crave Project: ${{ github.event.inputs.BASE_PROJECT }}%0ACrave ProjectID: $PROJECTID %0ABuild for ${{ github.event.inputs.DEVICE_NAME }} Build Success Min! }}"
 
       env:
         chatId: ${{ secrets.TELEGRAM_TO }}
@@ -535,7 +541,7 @@ jobs:
         if [ "$jobStatus" = "cancelled" ]; then
           jobMessage="has been Cancelled!"
         elif [ "$jobStatus" = "failure" ]; then
-          jobMessage="has Failed!"
+          jobMessage="Gagal Nich Min!"
         fi
 
         send_telegram_message "Crave Project: ${{ github.event.inputs.BASE_PROJECT }}%0ACrave ProjectID: $PROJECTID %0ABuild for ${{ github.event.inputs.DEVICE_NAME }} $jobMessage }}"
