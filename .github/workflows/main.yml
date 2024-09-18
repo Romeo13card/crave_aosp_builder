@@ -164,7 +164,7 @@ jobs:
          ;;
          "Miku-14")
           export PROJECTFOLDER="/crave-devspaces/Miku-14"
-          export PROJECTID="35"
+          export PROJECTID="72"
           export REPO_INIT="repo init -u https://github.com/Miku-UI/manifesto -b Udon_v2"
           ;;
         esac
