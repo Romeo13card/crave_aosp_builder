@@ -30,6 +30,7 @@ on:
           - 'Morbid'
           - 'The Parasite Project'
           - 'Project Sakura 11.0'
+          - 'Miku 14.0'
       BUILD_DIFFERENT_ROM:
         description: "Command to initialize a different 'repo' project:"
         required: false
@@ -200,6 +201,11 @@ jobs:
           export PROJECTID="85"
           export REPO_INIT="repo init --depth=1 -u https://github.com/ProjectSakura/android.git -b 11"
          ;;
+         "Miku-14")
+          export PROJECTFOLDER="/crave-devspaces/Miku-14"
+          export PROJECTID="35"
+          export REPO_INIT="repo init -u https://github.com/Miku-UI/manifesto -b Udon_v2"
+          ;;
         esac
 
         if [[ ${{ github.event.inputs.PRODUCT_NAME }} == *_* ]] && [[ ${{ github.event.inputs.PRODUCT_NAME }} != gsi_* ]] && [[ ${{ github.event.inputs.PRODUCT_NAME }} != sdk_* ]] && [[ ${{ github.event.inputs.PRODUCT_NAME }} != *_sprout ]] && [[ ${{ github.event.inputs.PRODUCT_NAME }} != Mi439_* ]] && [[ ${{ github.event.inputs.PRODUCT_NAME }} != Mi8937_* ]]; then
