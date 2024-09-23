@@ -30,7 +30,6 @@ on:
           - 'Morbid'
           - 'The Parasite Project'
           - 'Project Sakura 11.0'
-          - 'Miku 14.0'
       BUILD_DIFFERENT_ROM:
         description: "Command to initialize a different 'repo' project:"
         required: false
@@ -162,11 +161,6 @@ jobs:
           export PROJECTID="85"
           export REPO_INIT="repo init --depth=1 -u https://github.com/ProjectSakura/android.git -b 11"
          ;;
-         "Miku-14")
-          export PROJECTFOLDER="/crave-devspaces/Miku-14"
-          export PROJECTID="72"
-          export REPO_INIT="repo init -u https://github.com/Miku-UI/manifesto -b Udon_v2"
-          ;;
         esac
 
         if [[ ${{ github.event.inputs.PRODUCT_NAME }} == *_* ]] && [[ ${{ github.event.inputs.PRODUCT_NAME }} != gsi_* ]] && [[ ${{ github.event.inputs.PRODUCT_NAME }} != sdk_* ]] && [[ ${{ github.event.inputs.PRODUCT_NAME }} != *_sprout ]] && [[ ${{ github.event.inputs.PRODUCT_NAME }} != Mi439_* ]] && [[ ${{ github.event.inputs.PRODUCT_NAME }} != Mi8937_* ]]; then
@@ -394,7 +388,7 @@ jobs:
           -d parse_mode="Markdown"
         }
 
-        send_telegram_message "Crave Project: ${{ github.event.inputs.BASE_PROJECT }}%0ACrave ProjectID: $PROJECTID %0ABuild for ${{ github.event.inputs.DEVICE_NAME }} Antri Dulu Min }}"
+        send_telegram_message "Crave Project: ${{ github.event.inputs.BASE_PROJECT }}%0ACrave ProjectID: $PROJECTID %0ABuild for ${{ github.event.inputs.DEVICE_NAME }} Antri Dulu Min"
       env:
         chatId: ${{ secrets.TELEGRAM_TO }}
         botToken: ${{ secrets.TELEGRAM_TOKEN }}
@@ -495,7 +489,7 @@ jobs:
           -d parse_mode="Markdown"
         }
 
-        send_telegram_message "Crave Project: ${{ github.event.inputs.BASE_PROJECT }}%0ACrave ProjectID: $PROJECTID %0ABuild for ${{ github.event.inputs.DEVICE_NAME }} Build Success Min! }}"
+        send_telegram_message "Crave Project: ${{ github.event.inputs.BASE_PROJECT }}%0ACrave ProjectID: $PROJECTID %0ABuild for ${{ github.event.inputs.DEVICE_NAME }} Build Success Min!"
 
       env:
         chatId: ${{ secrets.TELEGRAM_TO }}
@@ -523,7 +517,7 @@ jobs:
           jobMessage="Gagal Nich Min!"
         fi
 
-        send_telegram_message "Crave Project: ${{ github.event.inputs.BASE_PROJECT }}%0ACrave ProjectID: $PROJECTID %0ABuild for ${{ github.event.inputs.DEVICE_NAME }} $jobMessage }}"
+        send_telegram_message "Crave Project: ${{ github.event.inputs.BASE_PROJECT }}%0ACrave ProjectID: $PROJECTID %0ABuild for ${{ github.event.inputs.DEVICE_NAME }} $jobMessage"
         # Todo: error.log link
       env:
         chatId: ${{ secrets.TELEGRAM_TO }}
