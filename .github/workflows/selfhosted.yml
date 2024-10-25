@@ -27,6 +27,10 @@ on:
           - 'LineageOS 16.0'
           - 'CyanogenMOD 14.1'
           - 'AOSP'
+          - 'Morbid'
+          - 'The Parasite Project'
+          - 'Project Sakura 11.0'
+          - 'Crdroid-14'
       BUILD_DIFFERENT_ROM:
         description: "Command to initialize a different 'repo' project:"
         required: false
@@ -182,6 +186,25 @@ jobs:
           export PROJECTID="35"
           export REPO_INIT="repo init -u https://android.googlesource.com/platform/manifest.git -b master --git-lfs --depth=1"
         ;;
+        "Morbid")
+          export PROJECTFOLDER="/crave-devspaces/Morbid"
+          export PROJECTID="36"
+          export REPO_INIT="repo init -u https://github.com/SerasaOS/android_manifest.git -b unsub --git-lfs"
+         ;; 
+         "The Parasite Project")
+          export PROJECTFOLDER="/crave-devspaces/TheParasiteProject"
+          export PROJECTID="82"
+          export REPO_INIT="repo init --depth=1 --no-repo-verify -u https://github.com/TheParasiteProject/manifest -b main -g default,-mips,-darwin,-notdefault --git-lfs"
+         ;;
+         "Project Sakura 11.0")
+          export PROJECTFOLDER="/crave-devspaces/ProjectSakura-11.0"
+          export PROJECTID="85"
+          export REPO_INIT="repo init --depth=1 -u https://github.com/ProjectSakura/android.git -b 11"
+         ;;
+         "Crdroid-14")
+          export PROJECTFOLDER="/crave-devspaces/Crdroid-14"
+          export PROJECTID="72"
+          export REPO_INIT="repo init -u https://github.com/crdroidandroid/android.git -b 14.0 --git-lfs"
         esac
 
         if [[ ${{ github.event.inputs.PRODUCT_NAME }} == *_* ]] && [[ ${{ github.event.inputs.PRODUCT_NAME }} != gsi_* ]] && [[ ${{ github.event.inputs.PRODUCT_NAME }} != sdk_* ]] && [[ ${{ github.event.inputs.PRODUCT_NAME }} != *_sprout ]] && [[ ${{ github.event.inputs.PRODUCT_NAME }} != Mi439_* ]] && [[ ${{ github.event.inputs.PRODUCT_NAME }} != Mi8937_* ]]; then
@@ -345,7 +368,7 @@ jobs:
           -d parse_mode="Markdown"
         }
         
-        send_telegram_message "Crave Project: ${{ github.event.inputs.BASE_PROJECT }}%0ACrave ProjectID: $PROJECTID %0ABuild for ${{ github.event.inputs.DEVICE_NAME }} has been queued %0ACheck Progress at: %0Ahttps://github.com/$(echo "${{ github.repository }}" | sed 's@_@\\_@g')/actions/runs/${{ github.run_id }}"
+        send_telegram_message "Crave Project: ${{ github.event.inputs.BASE_PROJECT }}%0ACrave ProjectID: $PROJECTID %0ABuild for ${{ github.event.inputs.DEVICE_NAME }} Saatnya Mengantri Tuanku🥰"
       env:
         chatId: ${{ secrets.TELEGRAM_TO }}
         botToken: ${{ secrets.TELEGRAM_TOKEN }}
@@ -498,8 +521,7 @@ jobs:
           -d parse_mode="Markdown"
         }
 
-        send_telegram_message "Crave Project: ${{ github.event.inputs.BASE_PROJECT }}%0ACrave ProjectID: $PROJECTID %0ABuild for ${{ github.event.inputs.DEVICE_NAME }} has Succeeded! %0ACheck Progress at: %0Ahttps://github.com/$(echo "${{ github.repository }}" | sed 's@_@\\_@g')/actions/runs/${{ github.run_id }}%0ADownload at: https://github.com/$(echo "${{ github.repository }}" | sed 's@_@\\_@g')/releases/tag/${{ github.run_id }}"
-
+        send_telegram_message "Crave Project: ${{ github.event.inputs.BASE_PROJECT }}%0ACrave ProjectID: $PROJECTID %0ABuild for ${{ github.event.inputs.DEVICE_NAME }} Nampaknya Rom Yang Dimasak Sudah Matang Tuanku👀"
       env:
         chatId: ${{ secrets.TELEGRAM_TO }}
         botToken: ${{ secrets.TELEGRAM_TOKEN }}
@@ -523,7 +545,7 @@ jobs:
         if [ "$jobStatus" = "cancelled" ]; then
           jobMessage="has been Cancelled!"
         elif [ "$jobStatus" = "failure" ]; then
-          jobMessage="has Failed!"
+          jobMessage="Terjadi Kegagalan Saat Memasak Tuanku☹️"        
         fi
 
         send_telegram_message "Crave Project: ${{ github.event.inputs.BASE_PROJECT }}%0ACrave ProjectID: $PROJECTID %0ABuild for ${{ github.event.inputs.DEVICE_NAME }} $jobMessage %0ACheck Progress at: %0Ahttps://github.com/$(echo "${{ github.repository }}" | sed 's@_@\\_@g')/actions/runs/${{ github.run_id }}"
