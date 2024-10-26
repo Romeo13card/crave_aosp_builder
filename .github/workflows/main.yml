@@ -31,7 +31,7 @@ on:
           - 'The Parasite Project'
           - 'Project Sakura 11.0'
           - 'Crdroid-14'
-          - 'LineageOS 22'
+          - 'LineageOS 22(beta)'
 
       BUILD_DIFFERENT_ROM:
         description: "Command to initialize a different 'repo' project:"
