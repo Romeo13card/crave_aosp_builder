@@ -169,7 +169,7 @@ jobs:
           export PROJECTID="72"
           export REPO_INIT="repo init -u https://github.com/crdroidandroid/android.git -b 14.0 --git-lfs"
          esac
-         "LineageOS 22.0(beta)*)
+         "LineageOS 22.0(beta)")
          export  PROJECTECTFOLDRR="/crave-devspaces/LineageOS 22.0(beta)"
          export PROJECTID="100"
          export REPO_INIT="repo init -u https://github.com/LineageOS/android.git -b lineage-22.0 --git-lfs"
