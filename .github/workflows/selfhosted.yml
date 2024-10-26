@@ -31,6 +31,7 @@ on:
           - 'The Parasite Project'
           - 'Project Sakura 11.0'
           - 'Crdroid-14'
+          - 'Derpfest 15'
       BUILD_DIFFERENT_ROM:
         description: "Command to initialize a different 'repo' project:"
         required: false
